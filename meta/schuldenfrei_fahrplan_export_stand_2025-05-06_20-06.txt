@@ -1,0 +1,21 @@
+
+🗂 Gesicherter Entwicklungsstand – Schuldenfrei-Fahrplan (06.05.2025 – 20:06)
+
+✅ Funktionen:
+- PDF-Export nur im Prognosemodus sichtbar
+- Bonuswerte werden im PDF nicht mehr angezeigt (nur intern berechnet)
+- „Feiertext“ erscheint korrekt und farblich hervorgehoben (nur im Prognosemodus)
+- Letzte Zahlungen werden im PDF als solche markiert
+- Seitenumbrüche und Seitenzahlprüfung erfolgreich (2 Seiten bei 19 Monaten)
+
+📂 Beteiligte Komponenten:
+- MonatsCard.jsx
+- fahrplan.css
+- SchuldenfreiTool.jsx
+- calculateRepaymentPlanUltra.js
+- PDF-Export-Funktion integriert via jsPDF (Basislösung)
+
+🔐 Psychologische & funktionale Entscheidungen:
+- Prognose als motivierende Zielvorschau mit vollständiger Visualisierung
+- Umsetzungsmodus zeigt den Feiertext erst nach aktiver Zahlung
+- Bonus bewusst ausgeblendet, da für Nutzer irrelevant – Fokus auf Tilgung

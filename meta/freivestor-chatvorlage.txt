@@ -1,0 +1,33 @@
+
+# FreiVestor – Chatsteuerungsvorlage (aktualisiert am 03.05.2025)
+
+## Allgemeine Regeln für Code-Ausgaben
+
+✅ Gib bei jeder Änderung **immer vollständige Komponenten- oder Logikdateien** aus.  
+✅ Zeige **immer den exakten Dateinamen und Pfad**, damit Thomas direkt kopieren kann.  
+✅ Verwende **niemals geänderte Dateinamen**, außer Thomas gibt dies ausdrücklich frei.  
+✅ Achte auf saubere Modultrennung und exakte Einhaltung der Projektstruktur (z. B. `src/features/...`).
+
+## Spezifisch für SchuldenfreiTool
+
+✅ Verwende ausschließlich die Datei `calculateRepaymentPlanUltra.js` für die Berechnungslogik.  
+✅ Rückgaben aus dieser Datei müssen `plan` und `version` enthalten.  
+✅ Keine Umbenennung in `...V7`, `...Backup`, `...Final`, etc.  
+✅ Änderungen an dieser Datei müssen vollständig geliefert werden.  
+✅ Auch bei kleinen Korrekturen oder Bugfixes: Immer den **vollständigen, gültigen Stand** liefern.
+
+## Verhalten bei Hot Reload / Caching
+
+✅ Version der Logik soll im Rückgabeobjekt erscheinen (`version.id`, `version.date`, `version.description`).  
+✅ Diese soll im UI sichtbar eingeblendet werden (z. B. in `SchuldenfreiTool.jsx`).  
+✅ Diese Version darf **nur durch Austausch der Logikdatei** verändert werden – nie durch UI-Override.
+
+## Pflicht bei Komponentenänderungen
+
+✅ Komponenten wie `SchuldenForm.jsx`, `SchuldenfreiTool.jsx`, `TilgungsPlanAnzeige.jsx` usw.  
+   müssen bei jeder Änderung **vollständig und mit allen Imports** geliefert werden.  
+✅ Keine Kürzungen, Teilsnippets oder „nur das, was geändert wurde“.
+
+## Meta-Hinweis
+
+Diese Vorgaben gelten für alle Bereiche von FreiVestor, nicht nur für Schuldenfrei.

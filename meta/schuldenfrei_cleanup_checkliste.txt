@@ -1,0 +1,60 @@
+🧹 CLEAN-UP CHECKLISTE – SCHULDENFREI-MODUL (Release 1.0.5)
+==========================================================
+
+✅ BASISSTRUKTUR
+----------------
+☑ src/features/schuldenfrei/ vorhanden
+☑ `SchuldenfreiTool.jsx` enthält vollständige UI-Logik
+☑ Monatskarten aus `@components/ui/MonatsCard` geladen
+☑ Farben über `@constants/colors.js` eingebunden
+
+✅ KOMPONENTEN & KOMMUNIKATION
+------------------------------
+☑ MonatsCard zeigt Bonus, Feier, Abschlusstext
+☑ ResponsiveScrollHint eingebaut für Mobil/Desktop
+☑ TilgungsKPI eingebunden und erhält echte Daten
+☑ Buttonleiste korrekt sichtbar mit aktiven ViewModes
+☑ PDF-Export funktioniert und nutzt `exportToPdf.js`
+
+✅ LOGIK & BERECHNUNG
+---------------------
+☑ `calculateRepaymentPlanUltra.js` ist auf dem aktuellen Stand:
+   → Bonus korrekt vergeben
+   → MussGuthaben-Logik implementiert
+   → Feierbeträge und Abschluss logisch platziert
+   → Kommentiert & wartbar
+
+☑ Dummy-Testdaten (3 Gläubiger) bewusst gekennzeichnet
+☐ ⬅️ ToDo: Entfernen für Produktivmodus + Integration mit Formular
+
+✅ STYLING
+----------
+☑ fahrplan.css aktualisiert
+☑ Monatskarten optisch im FreiVestor-Stil
+☑ Hinweis-Styling für Scroll / Mobil aktiv
+☑ Farben konsistent aus `colors.js` verwendet
+
+✅ DATEIEN & IMPORTS
+---------------------
+☑ Alias-Imports korrekt in:
+   ☐ SchuldenfreiTool.jsx
+   ☐ MonatsCard.jsx
+   ☐ ResponsiveScrollHint.jsx
+   ☐ TilgungsKPI.jsx
+   ☐ calculateRepaymentPlanUltra.js
+
+☑ Alle Dateien sind im richtigen Verzeichnis:
+   - Komponenten unter: src/features/schuldenfrei/components/
+   - Utils unter: src/features/schuldenfrei/utils/
+   - Styles unter: src/styles/
+   - Konstanten unter: src/constants/colors.js
+
+✅ DOKUMENTATION & TECHNIK
+---------------------------
+☐ ToDo: Kurzdoku zur Berechnungslogik in `docs/schuldenfrei_berechnung.md`
+☐ ToDo: Optionales Entwickler-Logbuch (Debug/Versionierung)
+☑ Kommentare in Kernlogik vorhanden (calculateRepaymentPlanUltra)
+
+==========================
+
+Thomas: Du kannst diese Liste verwenden, um den nächsten Release-Stand final zu dokumentieren.

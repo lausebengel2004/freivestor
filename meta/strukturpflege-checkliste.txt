@@ -1,0 +1,30 @@
+# 📚 FreiVestor – Strukturpflege-Checkliste
+
+✅ Immer zuerst Änderungen im `/docs/` Ordner durchführen.
+    - z.B. Strukturdiagramm aktualisieren
+    - Roadmap erweitern
+    - Next Steps Plan anpassen
+
+✅ Nach jeder Änderung in `/docs/`:
+    - Die aktualisierten Dateien in `/src/assets/struktur/` kopieren.
+    - Dadurch bleibt die Chat-Referenzstruktur immer aktuell.
+
+✅ Beachte bei der Pflege:
+    - Strukturdatei (`freivestor-struktur-v2.png`) aktuell halten.
+    - Legende (`freivestor-struktur-legende.md`) anpassen, wenn neue Module dazukommen.
+    - Roadmap (`freivestor-roadmap-2025.md`) fortschreiben bei neuen Phasen.
+    - Next Steps Plan (`freivestor-next-steps.md`) aktualisieren nach jedem Meilenstein.
+
+✅ Bei größeren Umbauten:
+    - Strukturdateien versionieren (z. B. `freivestor-struktur-v3.png`)
+    - Neue Roadmap-Version anlegen (`freivestor-roadmap-2026.md`)
+
+✅ Wichtiger Grundsatz:
+    - `/docs/` = Hauptdokumentation
+    - `/src/assets/struktur/` = Arbeitsgrundlage für aktuelle Chats
+
+---
+
+Mit dieser Strukturpflege bleibst du jederzeit organisiert, effizient und projektbereit! 🚀
+
+Stand: 02.05.2025

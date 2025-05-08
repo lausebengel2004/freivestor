@@ -1,0 +1,22 @@
+{
+  "module": [
+    {
+      "modul": "Schuldenfrei-Tool",
+      "phase": "Phase 1",
+      "kontext": "Berechnung / Tilgungslogik / MussGuthaben",
+      "releaseStand": "1.0.3",
+      "status": "in finaler \u00dcberarbeitung",
+      "ziel": "Berechnung validieren, vollst\u00e4ndige Monatslogik abschlie\u00dfen",
+      "automatisierungAktiv": true
+    },
+    {
+      "modul": "Einkommensverteiler-Tool",
+      "phase": "Phase 2",
+      "kontext": "Eingabemaske, Monatsverteilung, Zwischenspeicherung",
+      "releaseStand": "1.0.3",
+      "status": "in Planung",
+      "ziel": "Start der Entwicklung ab 10.05.2025 vorbereiten",
+      "automatisierungAktiv": true
+    }
+  ]
+}
