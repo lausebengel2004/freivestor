@@ -1,0 +1,41 @@
+# 📋 FreiVestor Chatsteuerung – Komplettübersicht
+# Stand: 10.05.2025 – Release 1.0.5
+
+---
+
+## 🔁 Automatikregeln: ZIP-Synchronisation
+
+[automatik:synchronisation]
+aktiv = true
+letzterUpload = 2025-05-10
+letztesReferenzZIP = freivestor_strukturpaket_1.0.5.zip
+
+# Regeln:
+- Wenn seit letzter ZIP mehr als 5 Tage vergangen sind → Erinnerung senden
+- Wenn mehr als 10 strukturbezogene Chatnachrichten erfolgt sind → Hinweis senden
+- Wenn Aliasstruktur, vite.config.ts oder projektstruktur.md geändert wurden → erneute Paketgenerierung anbieten
+- Wenn Thomas explizit nachfragt → aktuelle Dateien automatisch bereitstellen (vite.config.ts, projektstruktur.md, .gitignore)
+
+# Ausgabeformat für Hinweis:
+„Thomas, seit dem letzten Upload deines Projektpakets am [letzterUpload] hat sich die Struktur spürbar verändert. Ich empfehle dir, ein neues ZIP hochzuladen. Ich habe dir bereits alle nötigen Dateien vorbereitet.“
+
+---
+
+## 📦 Automatik: Strukturpaket-Dateien bereitstellen
+
+[automatik:strukturpaket]
+bereitstellen = true
+enthalten = [
+  vite.config.ts,
+  meta/projektstruktur.md,
+  meta/freivestor-chatsteuerung-komplett.txt,
+  .gitignore (optional)
+]
+
+---
+
+## 📌 Hinweise
+
+- Alle Regeln gelten chatübergreifend, solange `aktiv = true` gesetzt ist
+- Änderungen an Struktur, Alias oder Toolnamen müssen in projektstruktur.md dokumentiert sein
+- Diese Datei ersetzt frühere Einzelregeln zur Chat-Automatisierung
