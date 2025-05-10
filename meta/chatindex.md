@@ -1,5 +1,5 @@
 # 💬 FreiVestor ChatIndex
-Stand: 10.05.2025 – Strukturversion v1.0.5
+Stand: 10.05.2025 – Strukturversion v1.0.6-dev
 
 ---
 
@@ -7,7 +7,7 @@ Stand: 10.05.2025 – Strukturversion v1.0.5
 
 | Bereich              | Chatname                                               | Bemerkung                             |
 |----------------------|--------------------------------------------------------|----------------------------------------|
-| Schuldenfrei         | Schuldenfrei-Berechnung – Strukturstand v1.0.5        | Hauptentwicklungslogik, modular aktiv |
+| Schuldenfrei         | Schuldenfrei-Berechnung – Strukturstand v1.0.6-dev    | Hauptentwicklungslogik, modular aktiv |
 | Projektstruktur      | Strukturpflege & Aliasüberwachung                     | zentrale Meta-Arbeit                  |
 | GitHub / StackBlitz  | GitHub Desktop & ZIP-Synchronisation                  | aktiv für Upload-Koordination         |
 | YouTube              | Backstage / StrukturClip (ab Folge 1, Pictory)        | video-strukturell aktiv               |

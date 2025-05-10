@@ -1,5 +1,5 @@
 # 📁 meta/index.md – Übersicht über die Projekt-Metadaten
-**FreiVestor Strukturstand: v1.0.5 – Stand: 10.05.2025**
+**FreiVestor Strukturstand: v1.0.6-dev – Stand: 10.05.2025**
 
 ---
 
@@ -55,6 +55,14 @@
 - freivestor-kommunikationsstil.md
 - meta-readme.md
 - README.md
+
+---
+
+### 🧾 steuern/
+> Steuerdaten, Utils und UI-Komponenten für Deutschland, Österreich und Schweiz
+- steuernDaten/ (länderbasierte Werte)
+- steuernUtils/ (getSteuerDatenByLand)
+- steuernComponents/ (Select & Anzeige)
 
 ---
 
