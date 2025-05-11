@@ -2,6 +2,8 @@ import React from "react";
 import AgentenKonsole from "./AgentenKonsole";
 import AgentenDiagnose from "./AgentenDiagnose";
 import AgentenDashboardUI from "./AgentenDashboardUI";
+import ImportAgentButton from "./ImportAgentButton";
+
 
 const DevCockpit = () => {
   return (
@@ -12,6 +14,7 @@ const DevCockpit = () => {
       <AgentenDiagnose />
       <hr style={{ margin: '1.5rem 0' }} />
   <AgentenDashboardUI />
+  <ImportAgentButton />
 </div>
   );
 };
