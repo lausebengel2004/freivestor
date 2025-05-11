@@ -5,11 +5,10 @@ const ImportAgentButton = () => {
   const [status, setStatus] = useState("❔ Noch nicht geprüft");
 
   const prüfeImports = () => {
-    // Nur symbolisch – Agent müsste in Live-Umgebung via Node/CI laufen
-    setStatus("🔍 Prüfung gestartet ... (Simulation)");
+    setStatus("🔍 Prüfung gestartet ... (Demo-Modus)");
     setTimeout(() => {
       setStatus("✅ Keine kritischen Importfehler gefunden (Demo)");
-    }, 1500);
+    }, 1000);
   };
 
   return (

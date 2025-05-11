@@ -18,6 +18,8 @@ export default defineConfig({
       // 🧠 DevCockpit & Agenten
       '@devCockpit': path.resolve(__dirname, './src/globalFeatures/globalComponents/devCockpit'),
       '@coreAgenten': path.resolve(__dirname, './src/globalFeatures/globalUtils/agenten'),
+      
+
 
       // 💸 Schuldenfrei
       '@schuldenfreiComponents': path.resolve(__dirname, './src/features/schuldenfrei/schuldenfreiComponents'),

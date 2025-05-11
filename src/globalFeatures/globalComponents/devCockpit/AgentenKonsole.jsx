@@ -1,5 +1,6 @@
+
 import React, { useState } from "react";
-import { SchuldenfreiAgent } from "@features/schuldenfrei/agenten/schuldenfreiAgent";
+import { SchuldenfreiAgent } from "@schuldenfreiUtils/SchuldenfreiAgent";
 
 const schuldenAgent = new SchuldenfreiAgent();
 
@@ -20,7 +21,7 @@ const AgentenKonsole = () => {
 
   return (
     <div>
-      <h4>🧠 Schuldenfrei-Idee testen</h4>
+      <h4>💡 Agenten-Konsole</h4>
       <input
         type="text"
         value={idee}

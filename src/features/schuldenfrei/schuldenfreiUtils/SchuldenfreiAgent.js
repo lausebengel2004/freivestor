@@ -1,4 +1,4 @@
-import { agentLogger } from "@agenten/core/agent-logger";
+import { agentLogger } from "@coreAgenten/agent-logger";
 
 export class SchuldenfreiAgent {
   constructor() {}

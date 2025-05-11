@@ -1,21 +1,19 @@
+
 import React from "react";
 import AgentenKonsole from "./AgentenKonsole";
 import AgentenDiagnose from "./AgentenDiagnose";
-import AgentenDashboardUI from "./AgentenDashboardUI";
 import ImportAgentButton from "./ImportAgentButton";
-
 
 const DevCockpit = () => {
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>🛠 DevCockpit</h2>
-      <AgentenKonsole />
-      <hr style={{ margin: "1.5rem 0" }} />
+      <h2>🧠 DevCockpit für FreiVestor</h2>
       <AgentenDiagnose />
-      <hr style={{ margin: '1.5rem 0' }} />
-  <AgentenDashboardUI />
-  <ImportAgentButton />
-</div>
+      <hr style={{ margin: "1rem 0" }} />
+      <AgentenKonsole />
+      <hr style={{ margin: "1rem 0" }} />
+      <ImportAgentButton />
+    </div>
   );
 };
 
