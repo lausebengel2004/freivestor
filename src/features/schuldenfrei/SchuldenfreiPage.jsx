@@ -3,7 +3,7 @@ import MonatsCard from '@features/schuldenfrei/components/MonatsCard';
 import SchuldnerForm from '@features/schuldenfrei/components/SchuldnerForm';
 import SchuldnerListe from '@features/schuldenfrei/components/SchuldnerListe';
 import calculateRepaymentPlanUltra from '@features/schuldenfrei/utils/calculateRepaymentPlanUltra';
-import DevCockpit from "@devCockpit/DevCockpit";
+
 
 
 const SchuldenfreiPage = () => {
@@ -66,10 +66,7 @@ const SchuldenfreiPage = () => {
       ) : (
         <p>⚠️ Noch keine Schuldner eingetragen.</p>
       )}
-      <aside style={{ width: "400px", background: "#f9f9f9" }}>
-  <DevCockpit />
-</aside>
-    </div>
+          </div>
   );
 };
 
