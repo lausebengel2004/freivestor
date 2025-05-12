@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -7,42 +6,9 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowJs": true,
-    "checkJs": false,
-    "skipLibCheck": true,
-    "outDir": "./dist-ts",
-    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@features/*": ["src/features/*"],
-      "@agenten/*": ["src/agenten/*"],
-      "@meta/*": ["src/meta/*"],
-      "@devCockpit/*": ["src/globalFeatures/globalComponents/devCockpit/*"],
-      "@coreAgenten/*": ["src/globalFeatures/globalUtils/agenten/*"],
-      "@globalUtils/*": ["src/globalFeatures/globalUtils/*"],
-      "@globalComponents/*": ["src/globalFeatures/globalComponents/*"],
-      "@schuldenfreiComponents/*": ["src/features/schuldenfrei/schuldenfreiComponents/*"],
-      "@schuldenfreiUtils/*": ["src/features/schuldenfrei/schuldenfreiUtils/*"],
-      "@schuldenfreiDaten/*": ["src/features/schuldenfrei/schuldenfreiDaten/*"],
-      "@schuldenfreiVisuals/*": ["src/features/schuldenfrei/schuldenfreiVisuals/*"],
-      "@schuldenfreiSteuern/*": ["src/features/schuldenfrei/schuldenfreiSteuern/*"],
-      "@schuldenfreiExport/*": ["src/features/schuldenfrei/schuldenfreiExport/*"],
-      "@einkommensComponents/*": ["src/features/einkommensverteiler/einkommensComponents/*"],
-      "@einkommensUtils/*": ["src/features/einkommensverteiler/einkommensUtils/*"],
-      "@einkommensDaten/*": ["src/features/einkommensverteiler/einkommensDaten/*"],
-      "@einkommensVisuals/*": ["src/features/einkommensverteiler/einkommensVisuals/*"],
-      "@einkommensVerbindung/*": ["src/features/einkommensverteiler/einkommensVerbindung/*"],
-      "@einkommensExport/*": ["src/features/einkommensverteiler/einkommensExport/*"],
-      "@optionsComponents/*": ["src/features/optionshandel/optionsComponents/*"],
-      "@optionsUtils/*": ["src/features/optionshandel/optionsUtils/*"],
-      "@optionsDaten/*": ["src/features/optionshandel/optionsDaten/*"],
-      "@optionsStrategien/*": ["src/features/optionshandel/optionsStrategien/*"],
-      "@optionsVisuals/*": ["src/features/optionshandel/optionsVisuals/*"],
-      "@optionsSteuern/*": ["src/features/optionshandel/optionsSteuern/*"],
-      "@optionsExport/*": ["src/features/optionshandel/optionsExport/*"]
+      "@pages/*": ["./src/pages/*"]
     }
   },
   "include": ["src"]

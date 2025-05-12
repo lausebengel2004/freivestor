@@ -1,13 +1,7 @@
 import React from "react";
-import DevCockpitWrapper from "@devCockpit/DevCockpitWrapper";
 
-const AppLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div style={{ position: "relative", minHeight: "100vh", paddingBottom: "4rem" }}>
-      {children}
-      <DevCockpitWrapper />
-    </div>
-  );
+const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <div className="app-layout">{children}</div>;
 };
 
 export default AppLayout;
