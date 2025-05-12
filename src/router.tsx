@@ -1,11 +1,17 @@
 
 import { createBrowserRouter } from "react-router-dom";
 import SchuldenfreiPage from "@features/schuldenfrei/SchuldenfreiPage";
+import AppLayout from "@layout/AppLayout";
 
-// Später können hier weitere Tools ergänzt werden
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/freivestor",
-    element: <SchuldenfreiPage />,
+    element: (
+      <AppLayout>
+        <SchuldenfreiPage />
+      </AppLayout>
+    ),
   },
 ]);
+
+export default router;

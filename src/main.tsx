@@ -1,9 +1,10 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import SchuldenfreiPage from './features/schuldenfrei/SchuldenfreiPage';
+import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <SchuldenfreiPage />
-  </React.StrictMode>,
+    <App />
+  </React.StrictMode>
 );

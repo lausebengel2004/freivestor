@@ -1,52 +1,54 @@
-
 import React, { useState } from "react";
-import DevCockpit from "./DevCockpit";
 
 const DevCockpitWrapper: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const toggleOpen = () => setOpen((prev) => !prev);
+  const [offen, setOffen] = useState(false);
 
   return (
-    <>
-      <button
-        onClick={toggleOpen}
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          padding: "0.75rem 1rem",
-          background: "#003366",
-          color: "white",
-          border: "none",
-          borderRadius: "6px",
-          cursor: "pointer",
-          zIndex: 1000
-        }}
-      >
-        {open ? "❌ Cockpit schließen" : "🧠 Cockpit öffnen"}
-      </button>
-
-      {open && (
+    <div style={{ position: "fixed", bottom: 20, right: 20, zIndex: 9999 }}>
+      {!offen ? (
+        <button
+          style={{
+            background: "#1a1a1a",
+            color: "#fff",
+            padding: "0.5rem 1rem",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontSize: "0.9rem"
+          }}
+          onClick={() => setOffen(true)}
+        >
+          🚀 Cockpit öffnen
+        </button>
+      ) : (
         <div
           style={{
-            position: "fixed",
-            top: 0,
-            right: 0,
-            width: "400px",
-            height: "100vh",
             background: "#f9f9f9",
-            borderLeft: "2px solid #ccc",
-            boxShadow: "-2px 0 8px rgba(0,0,0,0.1)",
-            overflowY: "auto",
             padding: "1rem",
-            zIndex: 999
+            width: "320px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+            boxShadow: "0 0 10px rgba(0,0,0,0.15)"
           }}
         >
-          <DevCockpit />
+          <h4 style={{ marginTop: 0 }}>🛠 DevCockpit aktiv</h4>
+          <p>Dies ist deine Agenten-Testanzeige.</p>
+          <button
+            onClick={() => setOffen(false)}
+            style={{
+              background: "#ddd",
+              border: "none",
+              padding: "0.4rem 0.8rem",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginTop: "1rem"
+            }}
+          >
+            Schließen
+          </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

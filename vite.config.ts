@@ -17,6 +17,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),
+      '@layout': path.resolve(__dirname, './src/layout'),
       "@features": path.resolve(__dirname, "./src/features"),
       "@agenten": path.resolve(__dirname, "./src/agenten"),
       "@meta": path.resolve(__dirname, "./src/meta"),
