@@ -1,31 +1,66 @@
 
-import React from "react";
-import { useToolContext } from "@globalUtils/context/ToolContext";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
+// 1. Context für das Systemlog
+interface LogContextType {
+  logs: string[];
+  addLog: (msg: string) => void;
+}
+
+const LogContext = createContext<LogContextType | undefined>(undefined);
+
+// 2. Provider-Komponente für das Log-System
+export const DevCockpitLogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [logs, setLogs] = useState<string[]>([]);
+
+  useEffect(() => {
+    const initialLog = "📍 Systemlog gestartet am 12.05.2025 – 05:56 Uhr";
+    setLogs([initialLog]);
+  }, []);
+
+  const addLog = (msg: string) => {
+    setLogs((prev) => [...prev, msg]);
+  };
+
+  return (
+    <LogContext.Provider value={{ logs, addLog }}>
+      {children}
+    </LogContext.Provider>
+  );
+};
+
+// 3. Custom Hook für Zugriff
+export const useSystemLog = () => {
+  const context = useContext(LogContext);
+  if (!context) {
+    throw new Error("useSystemLog must be used within a DevCockpitLogProvider");
+  }
+  return context;
+};
+
+// 4. Anzeige-Komponente
 const DevCockpitSystemLog: React.FC = () => {
-  const { aktuellesTool } = useToolContext();
+  const { logs } = useSystemLog();
 
   return (
     <div
       style={{
-        marginTop: "2rem",
-        padding: "1rem",
-        background: "#fff6e6",
-        border: "1px solid #f0c36d",
-        borderRadius: "8px",
-        fontSize: "0.9rem",
+        marginTop: "1rem",
+        padding: "0.5rem",
+        background: "#fafafa",
+        border: "1px solid #ccc",
+        borderRadius: "6px",
+        fontSize: "0.85rem",
+        maxHeight: "120px",
+        overflowY: "auto",
       }}
     >
-      <h4>🛠 Systemstatus</h4>
-      <ul style={{ marginTop: "0.5rem", lineHeight: "1.6" }}>
-        <li>🔧 Aktives Tool: <strong>{aktuellesTool}</strong></li>
-        <li>🧠 DevCockpitWrapper geladen: ✅</li>
-        <li>🔄 ToolContext aktiv: ✅</li>
-        <li>🌐 Vite-Umgebung läuft (lokal oder StackBlitz): ✅</li>
+      <strong>🧾 SystemLog</strong>
+      <ul style={{ marginTop: "0.5rem", paddingLeft: "1rem", lineHeight: "1.4" }}>
+        {logs.map((log, i) => (
+          <li key={i}>{log}</li>
+        ))}
       </ul>
-      <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", color: "#555" }}>
-        Hinweis: Meldungen aus Browser-Extensions werden hier nicht aufgeführt.
-      </p>
     </div>
   );
 };
