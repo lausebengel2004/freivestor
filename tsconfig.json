@@ -8,6 +8,11 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@features/*": ["src/features/*"],
+      "@agenten/*": ["src/agenten/*"],
+      "@globalFeatures/*": ["src/globalFeatures/*"],
+      "@layout/*": ["src/layout/*"],
+      "@meta/*": ["src/meta/*"],
       "@pages/*": ["./src/pages/*"]
     }
   },

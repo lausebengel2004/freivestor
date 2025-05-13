@@ -10,7 +10,19 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@pages": path.resolve(__dirname, "./src/pages"),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@features': path.resolve(__dirname, 'src/features'),
+      '@agenten': path.resolve(__dirname, 'src/agenten'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@globalFeatures': path.resolve(__dirname, 'src/globalFeatures'),
+      '@layout': path.resolve(__dirname, 'src/layout'), // Optional für AppLayout
+      '@meta': path.resolve(__dirname, 'src/meta'), // falls benötigt
+      '@pages': path.resolve(__dirname, 'src/pages')
+
+      
+      
+      
+
     },
   },
 });
