@@ -17,7 +17,9 @@ export default defineConfig({
       '@globalFeatures': path.resolve(__dirname, 'src/globalFeatures'),
       '@layout': path.resolve(__dirname, 'src/layout'), // Optional für AppLayout
       '@meta': path.resolve(__dirname, 'src/meta'), // falls benötigt
-      '@pages': path.resolve(__dirname, 'src/pages')
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@router': path.resolve(__dirname, 'src/router.tsx'),
+
 
       
       

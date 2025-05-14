@@ -1,3 +1,7 @@
+import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
+
+logAgentenMeldung("DokumentationsAgent", "Dokumentation erfolgreich geschrieben.");
+
 // src/agenten/DokumentationsAgent.ts
 const DokumentationsAgent = {
   name: "DokumentationsAgent",

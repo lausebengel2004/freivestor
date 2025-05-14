@@ -1,0 +1,50 @@
+export const agentenManifest = [
+  {
+    name: "StrukturAgent",
+    importPfad: "dev/meta/StrukturAgent",
+    rolle: "meta",
+    sichtbar: true,
+    autostart: false,
+    diagnosefähig: true,
+  },
+  {
+    name: "AgentenDesignerAgent",
+    importPfad: "dev/meta/AgentenDesignerAgent",
+    rolle: "meta",
+    sichtbar: true,
+    autostart: false,
+    diagnosefähig: true,
+  },
+  {
+    name: "DiagnoseAgent",
+    importPfad: "dev/system/DiagnoseAgent",
+    rolle: "system",
+    sichtbar: false,
+    autostart: true,
+    diagnosefähig: true,
+  },
+  {
+    name: "DokumentationsAgent",
+    importPfad: "dev/system/DokumentationsAgent",
+    rolle: "system",
+    sichtbar: false,
+    autostart: true,
+    diagnosefähig: true,
+  },
+  {
+    name: "SnapshotAgent",
+    importPfad: "dev/system/SnapshotAgent",
+    rolle: "system",
+    sichtbar: false,
+    autostart: true,
+    diagnosefähig: true,
+  },
+  {
+    name: "SpeicherAgent",
+    importPfad: "dev/system/SpeicherAgent",
+    rolle: "system",
+    sichtbar: false,
+    autostart: true,
+    diagnosefähig: true,
+  }
+];

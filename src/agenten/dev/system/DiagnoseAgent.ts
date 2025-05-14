@@ -1,5 +1,9 @@
-// src/agenten/DiagnoseAgent.ts
-import { routerDefinition } from "../router";
+import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
+
+logAgentenMeldung("DiagnoseAgent", "Diagnose durchgeführt und gespeichert.");
+
+// src/agenten/dev/system/DiagnoseAgent.ts
+import { routerDefinition } from "@router";
 
 const DiagnoseAgent = {
   name: "DiagnoseAgent",

@@ -1,5 +1,8 @@
-// src/agenten/SnapshotAgent.ts
-import { routerDefinition } from "../router";
+import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
+
+logAgentenMeldung("SnapshotAgent", "SnapshotAgent erfolgreich ausgeführt.");
+
+// src/agenten/dev/system/SnapshotAgent.ts
 
 const SnapshotAgent = {
   name: "SnapshotAgent",
@@ -31,8 +34,6 @@ const SnapshotAgent = {
     const snapshotKey = `freivestor.agenten.snapshot.${timestamp}`;
     localStorage.setItem("freivestor.agenten.snapshot.latest", snapshotKey);
 
-    const routes = routerDefinition.map(r => `- \`${r.path}\``).join("\n");
-    const routeCount = routerDefinition.length;
 
     const keys = Object.keys(localStorage);
     const statusKeys = keys.filter(k => k.includes("status"));
@@ -44,7 +45,7 @@ const SnapshotAgent = {
       `**Zeitpunkt:** ${new Date().toLocaleString()}`,
       "",
       "**Routen**",
-      routes || "- *(keine gefunden)*",
+      "- *(nicht verwendet im SnapshotAgent)*",
       "",
       "**LocalStorage Keys**",
       keys.map(k => `- \`${k}\``).join("\n") || "- *(leer)*",
@@ -63,7 +64,7 @@ const SnapshotAgent = {
     const previousLog = localStorage.getItem(systemLogKey) || "";
     const newLogEntry = [
       `## 📸 Snapshot vom ${new Date().toLocaleString()}`,
-      `- Routen: ${routeCount}`,
+      `- Routen: *(nicht erfasst)*`,
       `- LocalStorage Keys: ${keys.length}`,
       `- Agentenstatus: ${statusCount} erkannt`,
       `- Gespeichert unter: \`${snapshotKey}\``,

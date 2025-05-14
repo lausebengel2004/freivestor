@@ -1,3 +1,7 @@
+import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
+
+logAgentenMeldung("SpeicherAgent", "Zwischenspeicherung durchgeführt.");
+
 // src/agenten/SpeicherAgent.ts
 const SpeicherAgent = {
   name: "SpeicherAgent",
