@@ -37,6 +37,13 @@
 - [ ] Style-System vorbereiten (`style-system.md`, Farbvarianten)
 - [ ] Archivierung alter Testdaten & Strukturfragmente
 
+### 🔁 Verfeinerung (Build r1)
+- Letzte Reste des routerDefinition-Problems beseitigt
+- SnapshotAgent vollständig entkoppelt von Routing
+- Logging geprüft & vollständig aktiviert
+- DevCockpit startet Agenten vollständig ohne Fehlermeldung
+
+
 ---
 
 ## 📌 Hinweise
