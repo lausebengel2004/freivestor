@@ -1,0 +1,23 @@
+{
+  "created": [],
+  "modified": [
+    "package-lock.json",
+    "package.json",
+    "src/features/devcockpit/DevCockpitPanel.tsx",
+    "src/features/devcockpit/DevCockpitWrapper.css"
+  ],
+  "deleted": [
+    "src/features/devcockpit.zip"
+  ],
+  "staged": [],
+  "untracked": [
+    "public/gitstatus.json",
+    "scripts/generateGitStatus.ts",
+    "src/agenten/dev/system/CommitMonitorAgent.ts",
+    "src/features/devcockpit/hooks/useCommitStatus.ts",
+    "src/features/devcockpit/panel/CommitMonitorPanel.tsx",
+    "src/features/devcockpit/ui/CommitStatusListe.tsx",
+    "src/features/devcockpit/ui/GitStatusAnzeige.tsx",
+    "tsconfig.git.json"
+  ]
+}

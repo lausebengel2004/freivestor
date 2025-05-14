@@ -4,18 +4,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:gitstatus": "ts-node --project tsconfig.git.json scripts/generateGitStatus.ts",
+    "snapshot:commit": "ts-node --project tsconfig.git.json scripts/snapshotCommitVorschlag.ts"
   },
   "dependencies": {
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.2"
+    "react-router-dom": "^6.22.2",
+    "simple-git": "^3.27.0"
   },
   "devDependencies": {
+    "@types/node": "^22.15.18",
     "@vitejs/plugin-react": "^4.0.3",
-    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }
 }

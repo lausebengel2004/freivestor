@@ -2,6 +2,7 @@ import React from "react";
 //Ui
 import AgentenStatusPanel from "@features/devcockpit/ui/AgentenStatusPanel";
 import AgentenMeldungPanel from "@agenten/dev/ui/AgentenMeldungPanel";
+import CommitMonitorPanel from "./panel/CommitMonitorPanel";
 
 //MetaAgent
 import StrukturAgent from "@agenten/dev/meta/StrukturAgent";
@@ -13,16 +14,13 @@ import { useSystemLog } from "./devCockpitContext";
 import DiagnoseDownloadButton from "./DiagnoseDownloadButton";
 import DiagnosePaketButton from "./DiagnosePaketButton";
 import SystemLogViewer from "./SystemLogViewer";
-import CommitVorschlagAgent from "./CommitVorschlagAgent";
 import "./DevCockpitWrapper.css";
-import { useAutoSyncAgent } from "./agents/AutoSyncAgent";
 
 
 
 
 const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { logs } = useSystemLog();
-  const commit = useAutoSyncAgent();
 
   return (
     <div className="devcockpit-panel">
@@ -44,12 +42,8 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       <DiagnoseDownloadButton />
       <DiagnosePaketButton />
       <hr />
-      <CommitVorschlagAgent />
+      <CommitMonitorPanel />
       <button onClick={onClose} style={{ marginTop: "1rem" }}>Schließen</button>
-      <div style={{ marginTop: "1rem" }}>
-  <strong>📄 AutoSync Commit-Vorschlag</strong>
-  <pre>{commit}</pre>
-</div>
     </div>
     
   );

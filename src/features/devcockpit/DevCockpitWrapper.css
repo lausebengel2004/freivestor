@@ -30,3 +30,23 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+.commit-monitor {
+  padding: 1rem;
+}
+
+.commit-monitor h3 {
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+.commit-status-liste {
+  padding-left: 1rem;
+}
+
+.commit-status-liste ul {
+  list-style-type: none;
+  padding-left: 0.5rem;
+}
+.commit-status-liste li {
+  margin-bottom: 4px;
+}
