@@ -15,7 +15,7 @@ export function updateAgentenDashboard() {
   let md = "# 🧠 FreiVestor Agenten-Dashboard\n\n";
   md += "**Release-Stand:** auto\n";
   md += `**Letzte Aktualisierung:** ${date}\n`;
-  md += "**Quelle:** agentenManifest.ts\n\n`;
+  md += "**Quelle:** agentenManifest.ts\n\n";
   md += "## ✅ Aktive Agenten\n\n";
   md += "| Agent | Pfad | Trigger | Status |\n";
   md += "|-------|------|---------|--------|\n";

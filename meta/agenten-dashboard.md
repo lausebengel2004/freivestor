@@ -1,38 +1,19 @@
 # 🧠 FreiVestor Agenten-Dashboard
 
-**Release-Stand:** v1.0.6-dev  
-**Strukturkonform seit:** 11.05.2025  
-**Zentrale Steuerübersicht für alle integrierten Agenten**
-
----
+**Release-Stand:** auto
+**Letzte Aktualisierung:** 2025-05-14
+**Quelle:** agentenManifest.ts
 
 ## ✅ Aktive Agenten
 
-| Agent | Pfad | Aufgabe | Trigger | Status |
-|-------|------|---------|---------|--------|
-| `SchuldenfreiAgent` | `src/features/schuldenfrei/schuldenfreiUtils/SchuldenfreiAgent.js` | Erkennt fehlerhafte Props in MonatsCard, interpretiert Nutzerideen (z. B. „Feiermonat“) | manuell via DevCockpit | ✅ aktiv |
-| `FreiVestorCoreAgent` | `src/globalFeatures/globalUtils/agenten/FreiVestorCoreAgent.js` | Prüft zentrale Dateien (`App.tsx`, `vite.config.ts`) auf Struktur-, Routing- und Aliasfehler | DevCockpit + Snapshotprüfung | ✅ aktiv |
-| `agent-logger` | `src/globalFeatures/globalUtils/agenten/agent-logger.js` | Gibt strukturierte Konsolenlogs für Agentenaktionen aus | automatisch bei Agentennutzung | ✅ eingebunden |
-| `agent-snapshot.json` | `src/globalFeatures/globalUtils/agenten/agent-snapshot.json` | Merkt sich Projektstand zum Vergleich bei Dateiänderungen | intern verwendet | ✅ eingebunden |
+| Agent | Pfad | Trigger | Status |
+|-------|------|---------|--------|
+| `StrukturAgent` | `src/agenten/dev/meta/StrukturAgent.ts(x)` | DevCockpit UI | ✅ sichtbar |
+| `AgentenDesignerAgent` | `src/agenten/dev/meta/AgentenDesignerAgent.ts(x)` | DevCockpit UI | ✅ sichtbar |
+| `DiagnoseAgent` | `src/agenten/dev/system/DiagnoseAgent.ts(x)` | Autostart | ✅ eingebunden |
+| `DokumentationsAgent` | `src/agenten/dev/system/DokumentationsAgent.ts(x)` | Autostart | ✅ eingebunden |
+| `SnapshotAgent` | `src/agenten/dev/system/SnapshotAgent.ts(x)` | Autostart | ✅ eingebunden |
+| `SpeicherAgent` | `src/agenten/dev/system/SpeicherAgent.ts(x)` | Autostart | ✅ eingebunden |
 
 ---
-
-## 🛠 DevCockpit-Komponenten
-
-| Komponente | Pfad | Beschreibung |
-|------------|------|--------------|
-| `DevCockpit.jsx` | `src/globalFeatures/globalComponents/devCockpit/DevCockpit.jsx` | Zentrale UI zur Agentensteuerung |
-| `AgentenKonsole.jsx` | `src/globalFeatures/globalComponents/devCockpit/AgentenKonsole.jsx` | Eingabe-UI zur Ideenanalyse |
-| `AgentenDiagnose.jsx` | `src/globalFeatures/globalComponents/devCockpit/AgentenDiagnose.jsx` | Überblick über bekannte Fehler, Snapshotstatus, Aliasprüfung |
-
----
-
-## 🔗 Verknüpfungen zur Projektstruktur
-
-- Alle Agentenpfade entsprechen der `projektstruktur.md`
-- Aliase sind in `vite.config.ts` korrekt eingebunden (`@coreAgenten`, `@devCockpit`)
-- Automatikverhalten aktiv laut `freivestor-automatikverhalten-dev.md`
-
----
-
-## 📅 Letzte Prüfung: 11.05.2025 – durch GPT-Agentenstrukturabgleich
+_Diese Datei wurde automatisch aus dem AgentenManifest erstellt._

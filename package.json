@@ -6,9 +6,16 @@
     "build": "vite build",
     "preview": "vite preview",
     "generate:gitstatus": "ts-node --project tsconfig.git.json scripts/generateGitStatus.ts",
-    "snapshot:commit": "ts-node --project tsconfig.git.json scripts/snapshotCommitVorschlag.ts"
+    "snapshot:commit": "ts-node --project tsconfig.git.json scripts/snapshotCommitVorschlag.ts",
+    "release:index": "tsx src/agenten/dev/release/prepareIndexCommit.ts",
+    "release:dashboard": "tsx src/agenten/dev/release/prepareDashboardCommit.ts",
+    "release:tag": "tsx src/agenten/dev/release/ReleaseTagAgent.ts",
+    "release": "npm run release:index && npm run release:dashboard && npm run release:tag",
+    "doku:agenten": "tsx src/agenten/dev/tools/generateAgentenDoku.ts",
+    "commit:generate": "tsx scripts/commitFusion.ts"
   },
   "dependencies": {
+    "fast-glob": "^3.3.3",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "react": "^18.2.0",
@@ -20,6 +27,7 @@
     "@types/node": "^22.15.18",
     "@vitejs/plugin-react": "^4.0.3",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.5"
   }
