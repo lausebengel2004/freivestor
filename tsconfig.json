@@ -14,7 +14,15 @@
       "@layout/*": ["src/layout/*"],
       "@meta/*": ["src/meta/*"],
       "@pages/*": ["./src/pages/*"]
-    }
+    },
+    "outDir": "dist-tools",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src", "tools"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

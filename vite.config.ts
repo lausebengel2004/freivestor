@@ -19,7 +19,7 @@ export default defineConfig({
       '@meta': path.resolve(__dirname, 'src/meta'), // falls benötigt
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@router': path.resolve(__dirname, 'src/router.tsx'),
-
+      '@context': path.resolve(__dirname, 'src/context'),
 
       
       

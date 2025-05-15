@@ -1,18 +1,23 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 
-// Tabs dynamisch
-const AgentenStatusPanel = lazy(() => import("@features/devcockpit/ui/AgentenStatusPanel"));
-const AgentenMeldungPanel = lazy(() => import("@agenten/dev/ui/AgentenMeldungPanel"));
-const AgentenDesignerPanel = lazy(() => import("@features/devcockpit/ui/AgentenDesignerPanel"));
-const AgentenStatusTabelle = lazy(() => import("@features/devcockpit/ui/AgentenStatusTabelle"));
-const CommitMonitorPanel = lazy(() => import("./panel/CommitMonitorPanel"));
-const DiagnoseDownloadButton = lazy(() => import("./DiagnoseDownloadButton"));
-const DiagnosePaketButton = lazy(() => import("./DiagnosePaketButton"));
+// 📦 Einheitliche Lazy-Imports aus dem panel-Verzeichnis
+const StrukturUeberblickPanel = lazy(() => import("./panel/StrukturUeberblickPanel"));
+const AgentenStatusPanel = lazy(() => import("./panel/AgentenStatusPanel"));
+const AgentenMeldungPanel = lazy(() => import("./panel/AgentenMeldungPanel"));
+const AgentenDesignerPanel = lazy(() => import("./panel/AgentenDesignerPanel"));
+const CommitMonitorAgent = lazy(() => import("@agenten/dev/system/CommitMonitorAgent"));
+const AgentenStatusTabelle = lazy(() => import("./ui/AgentenStatusTabelle"));
+const DiagnoseDownloadButton = lazy(() => import("./ui/DiagnoseDownloadButton"));
+const DiagnosePaketButton = lazy(() => import("./ui/DiagnosePaketButton"));
 const SystemLogViewer = lazy(() => import("./SystemLogViewer"));
-import StrukturAgent from "@agenten/dev/meta/StrukturAgent";
+const ArchivInspectorAgent = lazy(() => import("./panel/ArchivInspectorAgent"));
+
+
+import RollenSwitch from "@features/devcockpit/ui/RollenSwitch"; // UI-Elemente separat
 
 import { useSystemLog } from "./devCockpitContext";
 import "./DevCockpitWrapper.css";
+
 
 const TABS = ["Status", "Details", "Log", "Tools"];
 const TAB_STORAGE_KEY = "freivestor::cockpitTab";
@@ -29,6 +34,7 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   return (
     <div className="devcockpit-panel">
+     <RollenSwitch />
       <h3>🧠 DevCockpit</h3>
 
       <div className="tab-bar">
@@ -49,7 +55,7 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         {activeTab === "Status" && (
           <>
             <h4>Meta</h4>
-            <StrukturAgent />
+            <StrukturUeberblickPanel />
             <AgentenStatusPanel />
             <AgentenMeldungPanel />
           </>
@@ -66,13 +72,14 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </ul>
             <hr />
             <SystemLogViewer />
-            <CommitMonitorPanel />
+            <CommitMonitorAgent />
           </>
         )}
 
         {activeTab === "Tools" && (
           <>
             <AgentenDesignerPanel />
+            <ArchivInspectorAgent />
             <DiagnoseDownloadButton />
             <DiagnosePaketButton />
           </>

@@ -1,50 +1,67 @@
+// src/agenten/dev/agentenManifest.ts
+
 export const agentenManifest = [
   {
+    id: "struktur",
     name: "StrukturAgent",
-    importPfad: "dev/meta/StrukturAgent",
-    rolle: "meta",
+    typ: "meta",
     sichtbar: true,
-    autostart: false,
+    autostart: true,
     diagnosefähig: true,
+    rollen: ["developer"]
   },
   {
-    name: "AgentenDesignerAgent",
-    importPfad: "dev/meta/AgentenDesignerAgent",
-    rolle: "meta",
-    sichtbar: true,
-    autostart: false,
-    diagnosefähig: true,
-  },
-  {
+    id: "diagnose",
     name: "DiagnoseAgent",
-    importPfad: "dev/system/DiagnoseAgent",
-    rolle: "system",
+    typ: "meta",
+    sichtbar: true,
+    autostart: true,
+    diagnosefähig: true,
+    rollen: ["developer"]
+  },
+  {
+    id: "commit",
+    name: "CommitMonitorAgent",
+    typ: "system",
     sichtbar: false,
     autostart: true,
     diagnosefähig: true,
+    rollen: ["developer"]
   },
   {
-    name: "DokumentationsAgent",
-    importPfad: "dev/system/DokumentationsAgent",
-    rolle: "system",
-    sichtbar: false,
-    autostart: true,
-    diagnosefähig: true,
-  },
-  {
+    id: "snapshot",
     name: "SnapshotAgent",
-    importPfad: "dev/system/SnapshotAgent",
-    rolle: "system",
-    sichtbar: false,
-    autostart: true,
-    diagnosefähig: true,
+    typ: "meta",
+    sichtbar: true,
+    autostart: false,
+    diagnosefähig: false,
+    rollen: ["developer"]
   },
   {
-    name: "SpeicherAgent",
-    importPfad: "dev/system/SpeicherAgent",
-    rolle: "system",
-    sichtbar: false,
-    autostart: true,
+    id: "feedback",
+    name: "FeedbackAgent",
+    typ: "tool",
+    sichtbar: true,
+    autostart: false,
+    diagnosefähig: false,
+    rollen: ["user"]
+  },
+  {
+    id: "plan",
+    name: "PlanAssistent",
+    typ: "tool",
+    sichtbar: true,
+    autostart: false,
+    diagnosefähig: false,
+    rollen: ["user"]
+  },
+  {
+    id: "inspector",
+    name: "ArchivInspectorAgent",
+    typ: "meta",
+    sichtbar: true,
+    autostart: false,
     diagnosefähig: true,
+    rollen: ["developer"]
   }
 ];
