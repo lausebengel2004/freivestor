@@ -1,11 +1,14 @@
+// src/features/devcockpit/panel/AgentenStatusPanel.tsx
+
 import React, { useMemo } from "react";
 import { agentenManifest } from "@agenten/dev/agentenManifest";
 import { validateAgentenManifest } from "@agenten/dev/meta/validateAgentenManifest";
 import { useRolle } from "@context/RollenContext";
 import { useSystemLog } from "@features/devcockpit/devCockpitContext";
+import AgentenLebensanzeige from "@features/devcockpit/ui/AgentenLebensanzeige";
 
 const AgentenStatusPanel: React.FC = () => {
-  const rolle = useRolle();
+  const { rolle } = useRolle();
   const { logs } = useSystemLog();
 
   // 🔍 Manifest validieren
@@ -34,38 +37,30 @@ const AgentenStatusPanel: React.FC = () => {
     return result;
   }, [logs]);
 
-  // ✅ Absichernder Filter
+  // 🔒 Nur passende Agenten je nach Rolle anzeigen
   const agenten = agentenManifest.filter(
     agent => Array.isArray(agent.rollen) && agent.rollen.includes(rolle)
   );
 
   return (
     <div style={{ marginTop: "1rem" }}>
-      <h4>📊 Agentenübersicht</h4>
-      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.85rem" }}>
-        <thead style={{ background: "#eee" }}>
-          <tr>
-            <th style={{ textAlign: "left", padding: "0.5rem" }}>Agent</th>
-            <th>Typ</th>
-            <th>Sichtbar</th>
-            <th>Autostart</th>
-            <th>Diagnose</th>
-            <th>Letzte Aktivität</th>
-          </tr>
-        </thead>
-        <tbody>
-          {agenten.map(agent => (
-            <tr key={agent.id} style={{ borderBottom: "1px solid #ccc" }}>
-              <td style={{ padding: "0.3rem" }}>{agent.name}</td>
-              <td>{agent.typ ?? "–"}</td>
-              <td style={{ textAlign: "center" }}>{agent.sichtbar ? "🟢" : "⚫"}</td>
-              <td style={{ textAlign: "center" }}>{agent.autostart ? "✅" : "❌"}</td>
-              <td style={{ textAlign: "center" }}>{agent.diagnosefähig ? "🧪" : "-"}</td>
-              <td>{lastSeen[agent.name] ?? "–"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h4>📊 Agentenstatus-Übersicht für Rolle <code>{rolle}</code></h4>
+
+      {agenten.length === 0 && (
+        <p style={{ fontStyle: "italic" }}>Keine Agenten für diese Rolle registriert.</p>
+      )}
+
+      {agenten.map((agent, index) => (
+        <AgentenLebensanzeige
+          key={index}
+          name={agent.name}
+          type={agent.typ ?? "–"}
+          sichtbar={agent.sichtbar}
+          startbar={agent.startbar ?? false}
+          diagnosefähig={agent.diagnosefähig ?? false}
+          letzteAktivität={lastSeen[agent.name]}
+        />
+      ))}
     </div>
   );
 };

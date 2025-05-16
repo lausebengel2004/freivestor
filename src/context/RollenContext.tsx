@@ -9,7 +9,7 @@ const RollenContext = createContext<{
 }>({ rolle: "user", setRolle: () => {} });
 
 export const RollenProvider = ({ children }: { children: React.ReactNode }) => {
-  const [rolle, setRolle] = useState<Rolle>("user");
+  const [rolle, setRolle] = useState<Rolle>("developer");
 
   return (
     <RollenContext.Provider value={{ rolle, setRolle }}>

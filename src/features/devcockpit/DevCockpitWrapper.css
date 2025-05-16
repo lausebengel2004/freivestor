@@ -115,3 +115,51 @@
 .commit-status-liste li {
   margin-bottom: 4px;
 }
+.agent-status-box {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.agent-status-name {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.agent-type {
+  font-weight: normal;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.agent-status-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.agent-start-button {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.diagnose-chip {
+  background-color: #e0f7fa;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.last-run {
+  font-size: 0.75rem;
+  color: #444;
+}
