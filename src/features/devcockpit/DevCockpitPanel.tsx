@@ -27,7 +27,7 @@ import RollenSwitch from "@features/devcockpit/ui/RollenSwitch";
 import { useSystemLog } from "./devCockpitContext";
 import "./DevCockpitWrapper.css";
 
-const TABS = ["Status", "Details", "Log", "Tools"];
+const TABS = ["Status", "Details", "Log", "Tools", "Commit"];
 const TAB_STORAGE_KEY = "freivestor::cockpitTab";
 
 const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
