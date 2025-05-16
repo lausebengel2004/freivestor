@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import DevCockpitPanel from "./DevCockpitPanel";
 import "./DevCockpitWrapper.css";
-import AgentenSteuerung from "./AgentenSteuerung";
-
 
 
 const DevCockpitWrapper: React.FC = () => {
@@ -10,7 +8,6 @@ const DevCockpitWrapper: React.FC = () => {
 
   return (    
    <div className="devcockpit-wrapper">
-    <AgentenSteuerung />
       <button className="devcockpit-button" onClick={() => setOffen(!offen)}>
         🧠
       </button>

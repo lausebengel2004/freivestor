@@ -15,16 +15,16 @@ export default defineConfig({
       '@agenten': path.resolve(__dirname, 'src/agenten'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@globalFeatures': path.resolve(__dirname, 'src/globalFeatures'),
-      '@layout': path.resolve(__dirname, 'src/layout'), // Optional für AppLayout
-      '@meta': path.resolve(__dirname, 'src/meta'), // falls benötigt
+      '@layout': path.resolve(__dirname, 'src/layout'),
+      '@meta': path.resolve(__dirname, 'src/meta'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@router': path.resolve(__dirname, 'src/router.tsx'),
       '@context': path.resolve(__dirname, 'src/context'),
-
-      
-      
-      
-
     },
+  },
+
+  // 🛡️ wichtig für SpeicherAgent, DiagnoseAgent etc.
+  ssr: {
+    noExternal: ["fs", "path"],
   },
 });

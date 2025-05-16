@@ -1,8 +1,5 @@
-import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
-
-logAgentenMeldung("SnapshotAgent", "SnapshotAgent erfolgreich ausgeführt.");
-
 // src/agenten/dev/system/SnapshotAgent.ts
+import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
 
 const SnapshotAgent = {
   name: "SnapshotAgent",
@@ -16,10 +13,11 @@ const SnapshotAgent = {
 
   stop() {
     this.status = "⏸ Inaktiv";
-    console.log("📸 SnapshotAgent gestoppt");
+    console.log("🛑 SnapshotAgent gestoppt");
   },
 
   diagnose() {
+    // bestehende Diagnose-Funktion (falls benötigt)
     const lastKey = localStorage.getItem("freivestor.agenten.snapshot.latest");
     if (!lastKey) {
       console.log("📸 Noch kein Snapshot vorhanden.");
@@ -30,14 +28,20 @@ const SnapshotAgent = {
   },
 
   snapshot() {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const snapshotKey = `freivestor.agenten.snapshot.${timestamp}`;
-    localStorage.setItem("freivestor.agenten.snapshot.latest", snapshotKey);
+    // 1) Schlüssel generieren
+    const timestampKey = new Date().toISOString().replace(/[:.]/g, "-");
+    const snapshotKey = `freivestor.agenten.snapshot.${timestampKey}`;
+    localStorage.setItem(
+      "freivestor.agenten.snapshot.latest",
+      snapshotKey
+    );
 
-
+    // 2) Inhalt erzeugen
     const keys = Object.keys(localStorage);
-    const statusKeys = keys.filter(k => k.includes("status"));
-    const agentenStatus = statusKeys.map(k => `- \`${k}\`: \`${localStorage.getItem(k)}\``).join("\n");
+    const statusKeys = keys.filter((k) => k.includes("status"));
+    const agentenStatus = statusKeys
+      .map((k) => `- \`${k}\`: \`${localStorage.getItem(k)}\``)
+      .join("\n");
     const statusCount = statusKeys.length;
 
     const markdown = [
@@ -48,34 +52,44 @@ const SnapshotAgent = {
       "- *(nicht verwendet im SnapshotAgent)*",
       "",
       "**LocalStorage Keys**",
-      keys.map(k => `- \`${k}\``).join("\n") || "- *(leer)*",
+      keys.length > 0
+        ? keys.map((k) => `- \`${k}\``).join("\n")
+        : "- *(leer)*",
       "",
       "**Agentenstatus**",
       agentenStatus || "- *(nicht verfügbar)*",
       "",
-      `_Snapshot gespeichert unter: ${snapshotKey}_`
+      `_Snapshot gespeichert unter: ${snapshotKey}_`,
     ].join("\n");
 
-    // Snapshot speichern
+    // 3) In localStorage speichern
     localStorage.setItem(snapshotKey, markdown);
 
-    // system-log aktualisieren
+    // 4) System-Log updaten
     const systemLogKey = "freivestor.agenten.system-log.md";
     const previousLog = localStorage.getItem(systemLogKey) || "";
     const newLogEntry = [
       `## 📸 Snapshot vom ${new Date().toLocaleString()}`,
-      `- Routen: *(nicht erfasst)*`,
       `- LocalStorage Keys: ${keys.length}`,
       `- Agentenstatus: ${statusCount} erkannt`,
       `- Gespeichert unter: \`${snapshotKey}\``,
-      ""
+      "",
     ].join("\n");
-
-    const updatedLog = previousLog + "\n" + newLogEntry;
-    localStorage.setItem(systemLogKey, updatedLog);
+    localStorage.setItem(systemLogKey, previousLog + "\n" + newLogEntry);
 
     console.log(`📦 Snapshot + Logeintrag gespeichert unter ${snapshotKey}`);
-  }
+
+    // 5) LastRun-Timestamp setzen
+    const tsSnap = new Date().toISOString();
+    localStorage.setItem("agenten::snapshot::lastRun", tsSnap);
+    console.log(`✅ SnapshotAgent LastRun gesetzt: ${tsSnap}`);
+
+    // 6) Agenten-Meldung ins Log
+    logAgentenMeldung(
+      "SnapshotAgent",
+      "SnapshotAgent erfolgreich ausgeführt."
+    );
+  },
 };
 
 export default SnapshotAgent;

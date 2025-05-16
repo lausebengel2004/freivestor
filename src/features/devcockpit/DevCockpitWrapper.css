@@ -1,3 +1,5 @@
+/* ========== Grundlayout für DevCockpit ========== */
+
 .devcockpit-wrapper {
   position: fixed;
   bottom: 1rem;
@@ -14,22 +16,84 @@
   height: 3rem;
   font-size: 1.4rem;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+/* ========== Panel ========== */
 
 .devcockpit-panel {
   position: absolute;
   bottom: 3.5rem;
   right: 0;
   width: 350px;
-  background: white;
+  background: #fff;
   border: 1px solid #ccc;
   padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   max-height: 80vh;
   overflow-y: auto;
 }
+
+/* ========== Tab-Leiste ========== */
+
+.tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab-button {
+  padding: 4px 12px;
+  border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  background-color: #eaeaea;
+}
+
+.tab-button.active-tab {
+  background-color: #007acc;
+  color: white;
+  font-weight: bold;
+  border-color: #007acc;
+}
+
+/* ========== Agentenübersicht (Tabelle) ========== */
+
+.agenten-uebersicht-panel {
+  margin-top: 1rem;
+}
+
+.agenten-uebersicht-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.agenten-uebersicht-panel th,
+.agenten-uebersicht-panel td {
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.agenten-uebersicht-panel th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.agenten-uebersicht-panel td {
+  background-color: #fff;
+}
+
+/* ========== Commit Monitor ========== */
+
 .commit-monitor {
   padding: 1rem;
 }
@@ -47,25 +111,7 @@
   list-style-type: none;
   padding-left: 0.5rem;
 }
+
 .commit-status-liste li {
   margin-bottom: 4px;
-}
-.tab-bar {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.tab-bar button {
-  padding: 4px 12px;
-  border: 1px solid #ccc;
-  background-color: #f4f4f4;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 0.9rem;
-}
-
-.tab-bar button.active-tab {
-  background-color: #e0e0e0;
-  font-weight: bold;
 }

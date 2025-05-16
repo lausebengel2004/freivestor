@@ -1,20 +1,39 @@
-import { logAgentenMeldung } from "@agenten/dev/agentenMeldungsLog";
+// src/agenten/dev/system/SpeicherAgent.ts
+import fs from "fs";
+import path from "path";
 
-logAgentenMeldung("SpeicherAgent", "Zwischenspeicherung durchgeführt.");
+// Konfigurierbare Speicheraktionen:
+const speicherAktionen = [
+  {
+    key: "agenten::manifest::pending",
+    zielDatei: path.resolve("src/agenten/dev/agentenManifest.generated.ts"),
+    kommentar: "🛠 AgentenManifest gespeichert",
+  },
+  // Beispiel für spätere Erweiterung:
+  // {
+  //   key: "agenten::diagnose::md",
+  //   zielDatei: path.resolve("export/diagnose.md"),
+  //   kommentar: "📄 Diagnose Markdown gespeichert",
+  // },
+];
 
-// src/agenten/SpeicherAgent.ts
-const SpeicherAgent = {
-  name: "SpeicherAgent",
-  status: "⏸ Inaktiv",
-  diagnose() {
-    console.log("🧠 Diagnose SpeicherAgent läuft");
-  },
-  run() {
-    console.log("🚀 SpeicherAgent gestartet");
-  },
-  stop() {
-    console.log("🛑 SpeicherAgent gestoppt");
-  },
-};
+export default function SpeicherAgent() {
+  console.log("🚀 SpeicherAgent gestartet");
 
-export default SpeicherAgent;
+  const interval = setInterval(() => {
+    speicherAktionen.forEach(({ key, zielDatei, kommentar }) => {
+      const inhalt = localStorage.getItem(key);
+      if (inhalt) {
+        try {
+          fs.writeFileSync(zielDatei, inhalt, "utf-8");
+          localStorage.removeItem(key);
+          console.log(`${kommentar}: ${zielDatei}`);
+        } catch (err) {
+          console.error(`❌ Fehler beim Speichern von ${zielDatei}`, err);
+        }
+      }
+    });
+  }, 3000); // alle 3 Sekunden prüfen
+
+  return () => clearInterval(interval); // Agent kann bei Bedarf gestoppt werden
+}

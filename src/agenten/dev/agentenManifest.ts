@@ -23,7 +23,7 @@ export const agentenManifest = [
     id: "commit",
     name: "CommitMonitorAgent",
     typ: "system",
-    sichtbar: false,
+    sichtbar: true,
     autostart: true,
     diagnosefähig: true,
     rollen: ["developer"]
@@ -33,7 +33,7 @@ export const agentenManifest = [
     name: "SnapshotAgent",
     typ: "meta",
     sichtbar: true,
-    autostart: false,
+    autostart: true,
     diagnosefähig: false,
     rollen: ["developer"]
   },

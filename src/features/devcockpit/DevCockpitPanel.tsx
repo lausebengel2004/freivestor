@@ -1,23 +1,27 @@
+// src/features/devcockpit/panel/DevCockpitPanel.tsx
 import React, { useState, useEffect, lazy, Suspense } from "react";
+import AgentenManifestGeneratorPanel from "@features/devcockpit/panel/AgentenManifestGeneratorPanel";
+import LastSaveStatusPanel from "@features/devcockpit/ui/LastSaveStatusPanel";
+import WriteAgentStatusPanel from "@features/devcockpit/panel/WriteAgentStatusPanel";
 
-// 📦 Einheitliche Lazy-Imports aus dem panel-Verzeichnis
+
+
+
+// 📦 Lazy-Imports (nur UI-kompatible Panels)
 const StrukturUeberblickPanel = lazy(() => import("./panel/StrukturUeberblickPanel"));
 const AgentenStatusPanel = lazy(() => import("./panel/AgentenStatusPanel"));
 const AgentenMeldungPanel = lazy(() => import("./panel/AgentenMeldungPanel"));
 const AgentenDesignerPanel = lazy(() => import("./panel/AgentenDesignerPanel"));
-const CommitMonitorAgent = lazy(() => import("@agenten/dev/system/CommitMonitorAgent"));
 const AgentenStatusTabelle = lazy(() => import("./ui/AgentenStatusTabelle"));
-const DiagnoseDownloadButton = lazy(() => import("./ui/DiagnoseDownloadButton"));
-const DiagnosePaketButton = lazy(() => import("./ui/DiagnosePaketButton"));
 const SystemLogViewer = lazy(() => import("./SystemLogViewer"));
 const ArchivInspectorAgent = lazy(() => import("./panel/ArchivInspectorAgent"));
+const AgentenManifestDiffPanel = lazy(() => import("@features/devcockpit/panel/AgentenManifestDiffPanel"));
+const AgentenUebersichtPanel = lazy(() => import("./panel/AgentenUebersichtPanel"));
 
-
-import RollenSwitch from "@features/devcockpit/ui/RollenSwitch"; // UI-Elemente separat
+import RollenSwitch from "@features/devcockpit/ui/RollenSwitch";
 
 import { useSystemLog } from "./devCockpitContext";
 import "./DevCockpitWrapper.css";
-
 
 const TABS = ["Status", "Details", "Log", "Tools"];
 const TAB_STORAGE_KEY = "freivestor::cockpitTab";
@@ -34,20 +38,20 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   return (
     <div className="devcockpit-panel">
-     <RollenSwitch />
+      <RollenSwitch />
       <h3>🧠 DevCockpit</h3>
 
-      <div className="tab-bar">
-        {TABS.map(tab => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={activeTab === tab ? "active-tab" : ""}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
+    <div className="tab-bar">
+     {TABS.map((tab) => (
+    <button
+      key={tab}
+      onClick={() => setActiveTab(tab)}
+      className={`tab-button ${activeTab === tab ? "active-tab" : ""}`}
+    >
+      {tab}
+    </button>
+  ))}
+</div>
 
       <hr />
 
@@ -72,22 +76,26 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </ul>
             <hr />
             <SystemLogViewer />
-            <CommitMonitorAgent />
           </>
         )}
 
         {activeTab === "Tools" && (
           <>
+            <LastSaveStatusPanel />
+            <AgentenManifestDiffPanel />
+            <AgentenManifestGeneratorPanel />
+            <WriteAgentStatusPanel />            
             <AgentenDesignerPanel />
             <ArchivInspectorAgent />
-            <DiagnoseDownloadButton />
-            <DiagnosePaketButton />
+            
           </>
         )}
       </Suspense>
 
       <hr />
-      <button onClick={onClose} style={{ marginTop: "1rem" }}>Schließen</button>
+      <button onClick={onClose} style={{ marginTop: "1rem" }}>
+        Schließen
+      </button>
     </div>
   );
 };

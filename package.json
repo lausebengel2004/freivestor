@@ -12,12 +12,17 @@
     "release:tag": "tsx src/agenten/dev/release/ReleaseTagAgent.ts",
     "release": "npm run release:index && npm run release:dashboard && npm run release:tag",
     "doku:agenten": "tsx src/agenten/dev/tools/generateAgentenDoku.ts",
-    "commit:generate": "tsx scripts/commitFusion.ts"
+    "commit:generate": "tsx scripts/commitFusion.ts",
+    "agenten:scan": "tsx src/agenten/dev/utils/testAgentenScan.ts",
+    "agenten:speichern": "tsx src/agenten/dev/runSpeicherBruecke.ts",
+    "check:react-node-imports": "tsx scripts/checkNodeImportsInReact.ts",
+    "agenten:start": "tsx src/agenten/dev/runAgentenStartup.ts"
   },
   "dependencies": {
     "fast-glob": "^3.3.3",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
+    "node-localstorage": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.2",
