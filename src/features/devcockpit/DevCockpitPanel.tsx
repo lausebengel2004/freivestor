@@ -18,7 +18,8 @@ const AgentenStatusTabelle = lazy(() => import("./ui/AgentenStatusTabelle"));
 const SystemLogViewer = lazy(() => import("./SystemLogViewer"));
 const ArchivInspectorAgent = lazy(() => import("./panel/ArchivInspectorAgent"));
 const AgentenManifestDiffPanel = lazy(() => import("@features/devcockpit/panel/AgentenManifestDiffPanel"));
-const AgentenUebersichtPanel = lazy(() => import("./panel/AgentenUebersichtPanel"));
+
+import CommitMonitorAgentPanel from "@agenten/dev/system/CommitMonitorAgent";
 
 import RollenSwitch from "@features/devcockpit/ui/RollenSwitch";
 
@@ -89,8 +90,6 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <WriteAgentStatusPanel />            
             <AgentenDesignerPanel />
             <ArchivInspectorAgent />
-            <CommitMonitorPanel />
-
             
           </>
         )}

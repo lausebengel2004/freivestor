@@ -4,7 +4,28 @@ import { generateCommitTextFromArchivScan } from "@features/devcockpit/utils/gen
 import { generateUnifiedCommitSummary } from "@features/devcockpit/utils/generateUnifiedCommitSummary";
 import { useSystemLog } from "@features/devcockpit/devCockpitContext";
 
-const CommitMonitorAgent: React.FC = () => {
+// 🧠 Gemeinsame Agentenfunktion (für Panel-Nutzung)
+export const CommitMonitorAgent = {
+  run: async (logs: string[] = []) => {
+    const bericht = await loadLatestArchivScan();
+
+    if (bericht) {
+      return {
+        summary: "docs: ArchivScan-Änderungen übernommen",
+        body: generateCommitTextFromArchivScan(bericht),
+      };
+    }
+
+    const fallback = await generateUnifiedCommitSummary(logs);
+    return {
+      summary: "chore: Projektzustand gesichert",
+      body: fallback,
+    };
+  },
+};
+
+// 🧩 Interaktive UI-Komponente (z. B. im Tools-Tab)
+const CommitMonitorAgentPanel: React.FC = () => {
   const [commitText, setCommitText] = useState<string>("");
   const [copied, setCopied] = useState(false);
   const { logs } = useSystemLog();
@@ -52,4 +73,4 @@ const CommitMonitorAgent: React.FC = () => {
   );
 };
 
-export default CommitMonitorAgent;
+export default CommitMonitorAgentPanel;
