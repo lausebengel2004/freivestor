@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ARCHIV_INSPEKTOR_CONFIG } from "../config/archiv-inspector.config";
 import { generateArchivScanMarkdown } from "../utils/generateArchivScanMarkdown";
 import { loadLatestArchivScan } from "../utils/loadLatestArchivScan";
+import { parseArchivScanMarkdown } from "../utils/parseArchivScanMarkdown";
 
 const ArchivInspectorAgent: React.FC = () => {
   const [scanResults, setScanResults] = useState<null | string[][]>(null);
@@ -23,10 +24,25 @@ const ArchivInspectorAgent: React.FC = () => {
   const handleLadeBericht = async () => {
     const content = await loadLatestArchivScan();
     setBerichtText(content || "Kein Bericht gefunden.");
+
+    if (content) {
+      const parsed = parseArchivScanMarkdown(content);
+      setScanResults(parsed);
+    } else {
+      setScanResults(null);
+    }
   };
 
   return (
-    <div style={{ border: "1px solid #ccc", borderRadius: "8px", padding: "1rem", marginBottom: "1rem", background: "#fdfdfd" }}>
+    <div
+      style={{
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        padding: "1rem",
+        marginBottom: "1rem",
+        background: "#fdfdfd"
+      }}
+    >
       <h4>🧹 ArchivInspectorAgent</h4>
       <p>
         Konfiguration erkannt: <strong>{ARCHIV_INSPEKTOR_CONFIG.ordner.length}</strong> Ordner,{" "}
@@ -43,7 +59,18 @@ const ArchivInspectorAgent: React.FC = () => {
       </div>
 
       {berichtText && (
-        <div style={{ marginTop: "1rem", whiteSpace: "pre-wrap", background: "#f6f6f6", padding: "1rem", border: "1px solid #ccc", borderRadius: "6px", maxHeight: "400px", overflowY: "auto" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            whiteSpace: "pre-wrap",
+            background: "#f6f6f6",
+            padding: "1rem",
+            border: "1px solid #ccc",
+            borderRadius: "6px",
+            maxHeight: "400px",
+            overflowY: "auto"
+          }}
+        >
           <h5>📄 Berichtsvorschau</h5>
           <code style={{ fontSize: "0.8rem" }}>{berichtText}</code>
         </div>
