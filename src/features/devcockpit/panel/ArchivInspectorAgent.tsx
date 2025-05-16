@@ -4,6 +4,7 @@ import { generateArchivScanMarkdown } from "../utils/generateArchivScanMarkdown"
 import { loadLatestArchivScan } from "../utils/loadLatestArchivScan";
 import { parseArchivScanMarkdown } from "../utils/parseArchivScanMarkdown";
 import { extractScanTimestamp } from "../utils/extractScanTimestamp";
+import { scanArchivStatus } from "../utils/scanArchivStatus"; // ✅ NEU
 
 const ArchivInspectorAgent: React.FC = () => {
   const [scanResults, setScanResults] = useState<null | string[][]>(null);
@@ -13,7 +14,6 @@ const ArchivInspectorAgent: React.FC = () => {
   const handleExport = () => {
     if (!scanResults) return;
 
-    // Export ausführen
     const content = generateArchivScanMarkdown(scanResults);
     const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
@@ -24,7 +24,6 @@ const ArchivInspectorAgent: React.FC = () => {
     link.click();
     document.body.removeChild(link);
 
-    // Zeitstempel speichern
     localStorage.setItem("letzterArchivExport", new Date().toISOString());
     setStatusHinweis("aktuell");
   };
@@ -53,6 +52,15 @@ const ArchivInspectorAgent: React.FC = () => {
     }
   };
 
+  // ✅ NEU: Aktiven Scan ausführen
+  const handleScanAktivieren = async () => {
+    const results = await scanArchivStatus();
+    setScanResults(results);
+    const markdown = generateArchivScanMarkdown(results);
+    setBerichtText(markdown);
+    setStatusHinweis("geändert");
+  };
+
   const renderHinweis = () => {
     switch (statusHinweis) {
       case "aktuell":
@@ -75,6 +83,9 @@ const ArchivInspectorAgent: React.FC = () => {
       {renderHinweis()}
 
       <div style={{ marginBottom: "1rem" }}>
+        <button onClick={handleScanAktivieren} style={{ marginRight: "1rem", marginTop: "0.5rem" }}>
+          📡 Archiv jetzt scannen
+        </button>
         <button onClick={handleLadeBericht} style={{ marginRight: "1rem", marginTop: "0.5rem" }}>
           📂 Letzten Bericht öffnen
         </button>
