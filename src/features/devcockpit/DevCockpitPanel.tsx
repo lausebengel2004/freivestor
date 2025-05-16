@@ -3,6 +3,8 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import AgentenManifestGeneratorPanel from "@features/devcockpit/panel/AgentenManifestGeneratorPanel";
 import LastSaveStatusPanel from "@features/devcockpit/ui/LastSaveStatusPanel";
 import WriteAgentStatusPanel from "@features/devcockpit/panel/WriteAgentStatusPanel";
+import CommitMonitorPanel from "@features/devcockpit/panel/CommitMonitorPanel";
+
 
 
 
@@ -87,6 +89,8 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <WriteAgentStatusPanel />            
             <AgentenDesignerPanel />
             <ArchivInspectorAgent />
+            <CommitMonitorPanel />
+
             
           </>
         )}
