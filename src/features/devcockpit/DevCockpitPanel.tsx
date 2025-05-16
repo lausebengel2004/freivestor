@@ -4,6 +4,8 @@ import AgentenManifestGeneratorPanel from "@features/devcockpit/panel/AgentenMan
 import LastSaveStatusPanel from "@features/devcockpit/ui/LastSaveStatusPanel";
 import WriteAgentStatusPanel from "@features/devcockpit/panel/WriteAgentStatusPanel";
 import CommitTrackingPanel from "@features/devcockpit/panel/CommitTrackingPanel";
+import PushStatusChip from "@features/devcockpit/ui/PushStatusChip";
+
 
 
 
@@ -41,8 +43,11 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <div className="devcockpit-panel">
       <RollenSwitch />
-      <h3>🧠 DevCockpit</h3>
-
+      <div className="devcockpit-header">
+        <h3>🧠 DevCockpit</h3>
+        <PushStatusChip />
+        </div>
+      
     <div className="tab-bar">
      {TABS.map((tab) => (
     <button

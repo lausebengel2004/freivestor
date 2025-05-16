@@ -22,9 +22,6 @@ export const CommitTrackingAgent = {
     return `${diffMin} Minuten`;
   },
 
-  /**
-   * Prüft, ob nach dem letzten Push Änderungen im system-log.md gespeichert wurden.
-   */
   wurdeSeitherGeändert: (): boolean => {
     const letzterPush = localStorage.getItem("letzterPush");
     const systemLog = localStorage.getItem("system-log.md");
