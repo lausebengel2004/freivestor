@@ -94,11 +94,16 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <WriteAgentStatusPanel />            
             <AgentenDesignerPanel />
             <ArchivInspectorAgent />
-            <CommitTrackingPanel />
-            <CommitMonitorAgentPanel />
-            
           </>
         )}
+        {activeTab === "Commit" && (
+          <>
+          <h4>📂 Commit & Version</h4>
+            <CommitTrackingPanel />
+            <CommitMonitorAgentPanel />
+        {/* Optional: später SystemLogSimulatorPanel */}
+  </>
+)}
       </Suspense>
 
       <hr />
