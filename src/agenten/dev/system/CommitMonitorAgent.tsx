@@ -1,10 +1,12 @@
+// 📁 src/agenten/dev/system/CommitMonitorAgent.tsx
+
 import React, { useState } from "react";
 import { loadLatestArchivScan } from "@features/devcockpit/utils/loadLatestArchivScan";
 import { generateCommitTextFromArchivScan } from "@features/devcockpit/utils/generateCommitTextFromArchivScan";
 import { generateUnifiedCommitSummary } from "@features/devcockpit/utils/generateUnifiedCommitSummary";
 import { useSystemLog } from "@features/devcockpit/devCockpitContext";
 
-// 🧠 Gemeinsame Agentenfunktion (für Panel-Nutzung)
+// 🧠 Gemeinsame Agentenfunktion (für Programmlogik / Panels)
 export const CommitMonitorAgent = {
   run: async (logs: string[] = []) => {
     const bericht = await loadLatestArchivScan();
@@ -24,7 +26,7 @@ export const CommitMonitorAgent = {
   },
 };
 
-// 🧩 Interaktive UI-Komponente (z. B. im Tools-Tab)
+// 🧩 Interaktive UI-Komponente für DevCockpit
 const CommitMonitorAgentPanel: React.FC = () => {
   const [commitText, setCommitText] = useState<string>("");
   const [copied, setCopied] = useState(false);

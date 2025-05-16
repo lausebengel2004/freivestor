@@ -90,6 +90,7 @@ const DevCockpitPanel: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             <WriteAgentStatusPanel />            
             <AgentenDesignerPanel />
             <ArchivInspectorAgent />
+            <CommitMonitorAgentPanel />
             
           </>
         )}

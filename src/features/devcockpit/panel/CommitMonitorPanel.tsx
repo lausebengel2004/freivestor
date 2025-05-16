@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CommitMonitorAgent from "@agenten/dev/system/CommitMonitorAgent";
+import { CommitMonitorAgent } from "@agenten/dev/system/CommitMonitorAgent";
 
 const CommitMonitorPanel: React.FC = () => {
   const [summary, setSummary] = useState<string>("");
