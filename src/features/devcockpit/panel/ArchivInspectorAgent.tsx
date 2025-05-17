@@ -4,7 +4,7 @@ import { generateArchivScanMarkdown } from "../utils/generateArchivScanMarkdown"
 import { loadLatestArchivScan } from "../utils/loadLatestArchivScan";
 import { parseArchivScanMarkdown } from "../utils/parseArchivScanMarkdown";
 import { extractScanTimestamp } from "../utils/extractScanTimestamp";
-import { scanArchivStatus } from "../utils/scanArchivStatus"; // ✅ NEU
+import { scanArchivStatus } from "../utils/scanArchivStatus";
 
 const ArchivInspectorAgent: React.FC = () => {
   const [scanResults, setScanResults] = useState<null | string[][]>(null);
@@ -18,8 +18,9 @@ const ArchivInspectorAgent: React.FC = () => {
     const blob = new Blob([content], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
+    const date = new Date().toISOString().split("T")[0]; // 📁 dynamischer Dateiname
     link.href = url;
-    link.download = "archivscan_export.md";
+    link.download = `archivscan_${date}.md`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -52,7 +53,6 @@ const ArchivInspectorAgent: React.FC = () => {
     }
   };
 
-  // ✅ NEU: Aktiven Scan ausführen
   const handleScanAktivieren = async () => {
     const results = await scanArchivStatus();
     setScanResults(results);
@@ -95,21 +95,49 @@ const ArchivInspectorAgent: React.FC = () => {
       </div>
 
       {berichtText && (
-        <div
-          style={{
-            marginTop: "1rem",
-            whiteSpace: "pre-wrap",
-            background: "#f6f6f6",
-            padding: "1rem",
-            border: "1px solid #ccc",
-            borderRadius: "6px",
-            maxHeight: "400px",
-            overflowY: "auto"
-          }}
-        >
-          <h5>📄 Berichtsvorschau</h5>
-          <code style={{ fontSize: "0.8rem" }}>{berichtText}</code>
-        </div>
+        <>
+          <p style={{ fontStyle: "italic", fontSize: "0.85rem", marginTop: "0.5rem" }}>
+            🕒 Scan vom: {new Date(extractScanTimestamp(berichtText) ?? "").toLocaleString("de-DE")}
+          </p>
+
+          {scanResults && (
+            <div style={{ fontSize: "0.9rem", color: "#333", marginBottom: "0.5rem" }}>
+              {(() => {
+                const gesamt = scanResults.length;
+                const aktiv = scanResults.filter(r => r[3] === "aktiv").length;
+                const leer = scanResults.filter(r => r[3] === "leer").length;
+                const winzig = scanResults.filter(r => r[3] === "winzig").length;
+                const unbekannt = scanResults.filter(r => !r[3] || r[3] === "-").length;
+
+                return (
+                  <strong>
+                    📊 Dateien: {gesamt} →{" "}
+                    <span style={{ color: "green" }}>{aktiv} aktiv</span>,{" "}
+                    <span style={{ color: "orange" }}>{winzig} prüfen</span>,{" "}
+                    <span style={{ color: "red" }}>{leer} leer</span>,{" "}
+                    <span style={{ color: "#999" }}>{unbekannt} unbekannt</span>
+                  </strong>
+                );
+              })()}
+            </div>
+          )}
+
+          <div
+            style={{
+              marginTop: "0.5rem",
+              whiteSpace: "pre-wrap",
+              background: "#f6f6f6",
+              padding: "1rem",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              maxHeight: "400px",
+              overflowY: "auto"
+            }}
+          >
+            <h5>📄 Berichtsvorschau</h5>
+            <code style={{ fontSize: "0.8rem" }}>{berichtText}</code>
+          </div>
+        </>
       )}
     </div>
   );
