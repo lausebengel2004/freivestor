@@ -5,6 +5,8 @@ import { loadLatestArchivScan } from "../utils/loadLatestArchivScan";
 import { parseArchivScanMarkdown } from "../utils/parseArchivScanMarkdown";
 import { extractScanTimestamp } from "../utils/extractScanTimestamp";
 import { scanArchivStatus } from "../utils/scanArchivStatus";
+import { generateArchivScanHtml } from "../utils/generateArchivScanHtml";
+
 
 const ArchivInspectorAgent: React.FC = () => {
   const [scanResults, setScanResults] = useState<null | string[][]>(null);
