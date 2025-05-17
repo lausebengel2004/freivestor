@@ -3,7 +3,7 @@ import { ARCHIV_INSPEKTOR_CONFIG } from "../config/archiv-inspector.config";
 export async function scanArchivStatus(): Promise<string[][]> {
   const fileList: string[][] = [];
 
-  // Nutzer wählt einmal den Hauptordner
+  // Nutzer wählt einmalig den Hauptordner (z. B. freivestor_clean_boot)
   const rootHandle = await window.showDirectoryPicker();
 
   for (const subPath of ARCHIV_INSPEKTOR_CONFIG.ordner) {
@@ -40,6 +40,11 @@ export async function scanArchivStatus(): Promise<string[][]> {
     } catch (err) {
       console.warn(`📂 Ordner '${subPath}' nicht gefunden oder Zugriff verweigert:`, err);
     }
+  }
+
+  // ⚠️ Warnung anzeigen, wenn kein Ergebnis
+  if (fileList.length === 0) {
+    alert("⚠️ Es wurden keine Dateien gefunden. Bitte stelle sicher, dass du den richtigen Projektordner (z. B. 'freivestor_clean_boot') gewählt hast.");
   }
 
   return fileList;
