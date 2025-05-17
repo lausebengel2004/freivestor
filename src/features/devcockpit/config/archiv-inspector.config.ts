@@ -1,26 +1,30 @@
 // Konfigurationsdatei für ArchivInspectorAgent
 
 export const ARCHIV_INSPEKTOR_CONFIG = {
+  baseDir: "src", // ✅ ab hier wird intern gescannt
+
   ordner: [
-    "src/features/",
-    "src/components/",
-    "src/agenten/",
-    "src/context/",
-    "src/hooks/",
-    "src/styles/",
-    "src/utils/",
-    "src/assets/",
-    "src/constants/"
+    "features/",
+    "components/",
+    "agenten/",
+    "context/",
+    "hooks/",
+    "styles/",
+    "utils/",
+    "assets/",
+    "constants/"
   ],
+
   ignorieren: [
-    "src/meta/",
-    "src/docs/",
-    "src/test/",
+    "meta/",
+    "docs/",
+    "test/"
   ],
+
   dateitypen: [".ts", ".tsx", ".jsx", ".js", ".css", ".md"],
 
   // Zukünftige Optionen:
   aktiv: true,
   logExportAktivieren: true,
-  ampelfarben: true,
+  ampelfarben: true
 };
