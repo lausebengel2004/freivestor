@@ -3,12 +3,21 @@ import { ARCHIV_INSPEKTOR_CONFIG } from "../config/archiv-inspector.config";
 export async function scanArchivStatus(): Promise<string[][]> {
   const fileList: string[][] = [];
 
-  // Nutzer wählt einmalig den Hauptordner (z. B. freivestor_clean_boot)
+  // 📂 Nutzer wählt Projekt-Hauptordner (z. B. freivestor_clean_boot)
   const rootHandle = await window.showDirectoryPicker();
+
+  // 🔁 explizit src/ ansteuern
+  let srcHandle: FileSystemDirectoryHandle;
+  try {
+    srcHandle = await rootHandle.getDirectoryHandle("src", { create: false });
+  } catch (err) {
+    alert("❌ Der Ordner 'src' wurde im Projekt nicht gefunden. Bitte den richtigen Basisordner auswählen.");
+    return [];
+  }
 
   for (const subPath of ARCHIV_INSPEKTOR_CONFIG.ordner) {
     try {
-      const subDirHandle = await getSubDirectoryHandle(rootHandle, subPath);
+      const subDirHandle = await getSubDirectoryHandle(srcHandle, subPath);
 
       for await (const entry of subDirHandle.values()) {
         if (entry.kind !== "file") continue;
@@ -20,7 +29,7 @@ export async function scanArchivStatus(): Promise<string[][]> {
 
         if (!ARCHIV_INSPEKTOR_CONFIG.dateitypen.includes(ext)) continue;
 
-        const relativePath = `${subPath}/${name}`;
+        const relativePath = `src/${subPath}/${name}`;
         const typ = ext;
         const größe = `${sizeKB.toFixed(1)} KB`;
 
@@ -38,19 +47,18 @@ export async function scanArchivStatus(): Promise<string[][]> {
         fileList.push([relativePath, typ, größe, status, empfehlung]);
       }
     } catch (err) {
-      console.warn(`📂 Ordner '${subPath}' nicht gefunden oder Zugriff verweigert:`, err);
+      console.warn(`📁 Subpfad '${subPath}' nicht gefunden in 'src/':`, err);
     }
   }
 
-  // ⚠️ Warnung anzeigen, wenn kein Ergebnis
   if (fileList.length === 0) {
-    alert("⚠️ Es wurden keine Dateien gefunden. Bitte stelle sicher, dass du den richtigen Projektordner (z. B. 'freivestor_clean_boot') gewählt hast.");
+    alert("⚠️ Es wurden keine Dateien gefunden. Bitte stelle sicher, dass dein Projekt einen 'src/'-Ordner enthält und du den Basisordner gewählt hast.");
   }
 
   return fileList;
 }
 
-// ✅ Hilfsfunktion für verschachtelte Pfade wie "features/devcockpit/ui"
+// 🔧 Hilfsfunktion für rekursive Ordnernavigation
 async function getSubDirectoryHandle(
   root: FileSystemDirectoryHandle,
   path: string
